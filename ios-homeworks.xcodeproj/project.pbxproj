@@ -13,6 +13,8 @@
 		977B515628B7FBB900D47FF6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 977B515428B7FBB900D47FF6 /* Main.storyboard */; };
 		977B515828B7FBB900D47FF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 977B515728B7FBB900D47FF6 /* Assets.xcassets */; };
 		977B515B28B7FBB900D47FF6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 977B515928B7FBB900D47FF6 /* LaunchScreen.storyboard */; };
+		977B516328B7FE7C00D47FF6 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977B516228B7FE7C00D47FF6 /* ProfileView.swift */; };
+		977B516528B7FE8B00D47FF6 /* ProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 977B516428B7FE8B00D47FF6 /* ProfileView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		977B515728B7FBB900D47FF6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		977B515A28B7FBB900D47FF6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		977B515C28B7FBB900D47FF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		977B516228B7FE7C00D47FF6 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		977B516428B7FE8B00D47FF6 /* ProfileView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				977B515728B7FBB900D47FF6 /* Assets.xcassets */,
 				977B515928B7FBB900D47FF6 /* LaunchScreen.storyboard */,
 				977B515C28B7FBB900D47FF6 /* Info.plist */,
+				977B516228B7FE7C00D47FF6 /* ProfileView.swift */,
+				977B516428B7FE8B00D47FF6 /* ProfileView.xib */,
 			);
 			path = "ios-homeworks";
 			sourceTree = "<group>";
@@ -125,6 +131,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				977B516528B7FE8B00D47FF6 /* ProfileView.xib in Resources */,
 				977B515B28B7FBB900D47FF6 /* LaunchScreen.storyboard in Resources */,
 				977B515828B7FBB900D47FF6 /* Assets.xcassets in Resources */,
 				977B515628B7FBB900D47FF6 /* Main.storyboard in Resources */,
@@ -138,6 +145,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				977B516328B7FE7C00D47FF6 /* ProfileView.swift in Sources */,
 				977B515328B7FBB900D47FF6 /* ViewController.swift in Sources */,
 				977B514F28B7FBB900D47FF6 /* AppDelegate.swift in Sources */,
 				977B515128B7FBB900D47FF6 /* SceneDelegate.swift in Sources */,
