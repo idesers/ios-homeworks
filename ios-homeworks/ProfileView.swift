@@ -15,5 +15,9 @@ class ProfileView: UIView {
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UITextView!
     
+    static func createView() -> ProfileView {
+        let view: ProfileView = loadFromNib()
+        return view
+    }
 
 }
