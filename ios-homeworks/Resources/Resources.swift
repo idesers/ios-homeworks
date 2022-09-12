@@ -17,5 +17,10 @@ struct Resources {
     struct Images {
         static let cat = UIImage(named: "cat")
     }
+    
+    struct Fonts {
+        static let title = UIFont.systemFont(ofSize: 18, weight: .bold)
+        static let body = UIFont.systemFont(ofSize: 14, weight: .regular)
+    }
 }
 
