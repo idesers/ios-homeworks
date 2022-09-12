@@ -19,19 +19,23 @@ class ProfileHeaderView: UIView {
     private let setStatusButton = UIButton(configuration: .filled())
     private let statusTextField = UITextField()
     
+    
     override init(frame: CGRect) {
         super.init(frame: .zero)
         configure()
     }
     
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     
     override func layoutSubviews() {
         super.layoutSubviews()
         avatarImageView.layer.cornerRadius = avatarImageView.frame.width / 2
     }
+    
     
     private func configure() {
         configureAvatarImageView()
@@ -40,6 +44,7 @@ class ProfileHeaderView: UIView {
         configureStatusTextField()
         configureSetStatusButton()
     }
+    
     
     private func configureAvatarImageView() {
         self.addSubview(avatarImageView)
@@ -59,6 +64,7 @@ class ProfileHeaderView: UIView {
         ])
     }
     
+    
     private func configureLabels() {
         nameLabel.font = Resources.Fonts.title
         nameLabel.textAlignment = .left
@@ -70,6 +76,7 @@ class ProfileHeaderView: UIView {
         statusLabel.textColor = .gray
         statusLabel.text = "Status"
     }
+    
     
     private func configureLabelsStackView() {
         self.addSubview(labelsStackView)
@@ -87,6 +94,7 @@ class ProfileHeaderView: UIView {
             labelsStackView.bottomAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: -padding)
         ])
     }
+    
     
     private func configureStatusTextField() {
         self.addSubview(statusTextField)
@@ -111,6 +119,7 @@ class ProfileHeaderView: UIView {
             statusTextField.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
+    
     
     private func configureSetStatusButton() {
         self.addSubview(setStatusButton)
