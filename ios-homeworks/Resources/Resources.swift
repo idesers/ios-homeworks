@@ -13,5 +13,9 @@ struct Resources {
         static let person = UIImage(systemName: "person")!
         static let infoCircle = UIImage(systemName: "info.circle")
     }
+    
+    struct Images {
+        static let cat = UIImage(named: "cat")
+    }
 }
 
