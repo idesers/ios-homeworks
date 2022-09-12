@@ -9,7 +9,9 @@ import UIKit
 
 class FeedViewController: UIViewController {
     
-    private var actionButton = UIButton(configuration: .tinted())
+    private var actionButtonFirst = UIButton(configuration: .tinted())
+    private var actionButtonSecond = UIButton(configuration: .tinted())
+    private let buttonsStackView = UIStackView()
     
     private let post = Post(title: "This is post")
     
@@ -21,22 +23,35 @@ class FeedViewController: UIViewController {
         navigationItem.largeTitleDisplayMode = .always
         title = "Feed"
         
-        configureActionButton()
+        configureActionButtons()
+        configureButtonsStackView()
     }
     
     
-    private func configureActionButton() {
-        view.addSubview(actionButton)
+    private func configureActionButtons() {
+        actionButtonFirst.setTitle("Show Post", for: .normal)
+        actionButtonFirst.addTarget(self, action: #selector(showPost), for: .touchUpInside)
         
-        actionButton.setTitle("Show Post", for: .normal)
-        actionButton.addTarget(self, action: #selector(showPost), for: .touchUpInside)
-        actionButton.translatesAutoresizingMaskIntoConstraints = false
+        actionButtonSecond.setTitle("Show Post", for: .normal)
+        actionButtonSecond.addTarget(self, action: #selector(showPost), for: .touchUpInside)
+    }
+    
+    
+    private func configureButtonsStackView() {
+        view.addSubview(buttonsStackView)
+        
+        buttonsStackView.translatesAutoresizingMaskIntoConstraints = false
+        buttonsStackView.axis = .vertical
+        buttonsStackView.distribution = .fillEqually
+        buttonsStackView.spacing = 10
+        buttonsStackView.addArrangedSubview(actionButtonFirst)
+        buttonsStackView.addArrangedSubview(actionButtonSecond)
         
         NSLayoutConstraint.activate([
-            actionButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 48),
-            actionButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            actionButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5),
-            actionButton.heightAnchor.constraint(equalToConstant: 48)
+            buttonsStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            buttonsStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            buttonsStackView.heightAnchor.constraint(equalToConstant: 200),
+            buttonsStackView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5),
         ])
     }
     
