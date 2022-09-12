@@ -112,6 +112,8 @@ class ProfileHeaderView: UIView {
         statusTextField.leftViewMode = .always
         statusTextField.leftView = UIView(frame: .init(x: 0, y: 0, width: padding, height: 0))
         
+        statusTextField.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
+        
         NSLayoutConstraint.activate([
             statusTextField.topAnchor.constraint(equalTo: labelsStackView.bottomAnchor, constant: padding / 2),
             statusTextField.leadingAnchor.constraint(equalTo: labelsStackView.leadingAnchor),
@@ -128,6 +130,7 @@ class ProfileHeaderView: UIView {
         setStatusButton.tintColor = .systemBlue
         setStatusButton.titleLabel?.textColor = .white
         setStatusButton.setTitle("Set Status", for: .normal)
+        setStatusButton.isEnabled = false
         
         setStatusButton.layer.cornerRadius = 4
         setStatusButton.layer.shadowRadius = 4
@@ -135,11 +138,25 @@ class ProfileHeaderView: UIView {
         setStatusButton.layer.shadowColor = UIColor.black.cgColor
         setStatusButton.layer.shadowOpacity = 0.7
         
+        setStatusButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        
         NSLayoutConstraint.activate([
             setStatusButton.topAnchor.constraint(equalTo: statusTextField.bottomAnchor, constant: padding / 2),
             setStatusButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding),
             setStatusButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
             setStatusButton.heightAnchor.constraint(equalToConstant: 50)
         ])
+    }
+    
+    
+    @objc private func buttonPressed() {
+        statusTextField.text = nil
+        setStatusButton.isEnabled = false
+        statusLabel.text = status
+    }
+    
+    @objc private func statusTextChanged(_ textField: UITextField) {
+        status = textField.text
+        setStatusButton.isEnabled = !textField.text!.isEmpty
     }
 }
