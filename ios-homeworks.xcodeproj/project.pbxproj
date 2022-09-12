@@ -18,6 +18,7 @@
 		977B515328B7FBB900D47FF6 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977B515228B7FBB900D47FF6 /* TabBarController.swift */; };
 		977B515828B7FBB900D47FF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 977B515728B7FBB900D47FF6 /* Assets.xcassets */; };
 		977B515B28B7FBB900D47FF6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 977B515928B7FBB900D47FF6 /* LaunchScreen.storyboard */; };
+		978FB91D28CFB3FA005CCAD1 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978FB91C28CFB3FA005CCAD1 /* ProfileHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		977B515728B7FBB900D47FF6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		977B515A28B7FBB900D47FF6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		977B515C28B7FBB900D47FF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		978FB91C28CFB3FA005CCAD1 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +56,6 @@
 				9714ADB328BD3CC700A842C8 /* FeedViewController.swift */,
 				9714ADB528BD3CD300A842C8 /* PostViewController.swift */,
 				9714ADB728BD3CEC00A842C8 /* InfoViewController.swift */,
-				9714ADBB28BD3FE500A842C8 /* ProfileViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -105,6 +106,7 @@
 		977B514D28B7FBB900D47FF6 /* ios-homeworks */ = {
 			isa = PBXGroup;
 			children = (
+				978FB91B28CFB3D5005CCAD1 /* Profile */,
 				9714ADC128BD4EA900A842C8 /* Application */,
 				9714ADBF28BD4E8500A842C8 /* Controllers */,
 				9714ADC028BD4EA000A842C8 /* Resources */,
@@ -112,6 +114,15 @@
 				9714ADC228BD4EC000A842C8 /* Model */,
 			);
 			path = "ios-homeworks";
+			sourceTree = "<group>";
+		};
+		978FB91B28CFB3D5005CCAD1 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				978FB91C28CFB3FA005CCAD1 /* ProfileHeaderView.swift */,
+				9714ADBB28BD3FE500A842C8 /* ProfileViewController.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -191,6 +202,7 @@
 				977B515128B7FBB900D47FF6 /* SceneDelegate.swift in Sources */,
 				9714ADB828BD3CEC00A842C8 /* InfoViewController.swift in Sources */,
 				9714ADBE28BD445300A842C8 /* Post.swift in Sources */,
+				978FB91D28CFB3FA005CCAD1 /* ProfileHeaderView.swift in Sources */,
 				9714ADBC28BD3FE500A842C8 /* ProfileViewController.swift in Sources */,
 				9714ADB628BD3CD300A842C8 /* PostViewController.swift in Sources */,
 			);
