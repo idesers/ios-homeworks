@@ -9,9 +9,27 @@ import UIKit
 
 class FeedViewController: UIViewController {
     
-    private var actionButtonFirst = UIButton(configuration: .tinted())
-    private var actionButtonSecond = UIButton(configuration: .tinted())
-    private let buttonsStackView = UIStackView()
+    private lazy var actionButtonFirst: UIButton = {
+        let actionButtonFirst = UIButton(configuration: .tinted())
+        actionButtonFirst.setTitle("Show Post", for: .normal)
+        return actionButtonFirst
+    }()
+    
+    private lazy var actionButtonSecond: UIButton = {
+        let actionButtonSecond = UIButton(configuration: .tinted())
+        actionButtonSecond.setTitle("Show Post", for: .normal)
+        return actionButtonSecond
+    }()
+    
+    
+    private lazy var buttonsStackView: UIStackView = {
+        let buttonsStackView = UIStackView()
+        buttonsStackView.translatesAutoresizingMaskIntoConstraints = false
+        buttonsStackView.axis = .vertical
+        buttonsStackView.distribution = .fillEqually
+        buttonsStackView.spacing = 10
+        return buttonsStackView
+    }()
     
     private let post = Post(title: "This is post")
     
@@ -23,30 +41,27 @@ class FeedViewController: UIViewController {
         navigationItem.largeTitleDisplayMode = .always
         title = "Feed"
         
-        configureActionButtons()
-        configureButtonsStackView()
+        addSubviews()
+        makeConstraints()
+        setupTargets()
     }
     
     
-    private func configureActionButtons() {
-        actionButtonFirst.setTitle("Show Post", for: .normal)
-        actionButtonFirst.addTarget(self, action: #selector(showPost), for: .touchUpInside)
+    private func addSubviews() {
+        view.addSubview(buttonsStackView)
         
-        actionButtonSecond.setTitle("Show Post", for: .normal)
+        buttonsStackView.addArrangedSubview(actionButtonFirst)
+        buttonsStackView.addArrangedSubview(actionButtonSecond)
+    }
+    
+    
+    private func setupTargets() {
+        actionButtonFirst.addTarget(self, action: #selector(showPost), for: .touchUpInside)
         actionButtonSecond.addTarget(self, action: #selector(showPost), for: .touchUpInside)
     }
     
     
-    private func configureButtonsStackView() {
-        view.addSubview(buttonsStackView)
-        
-        buttonsStackView.translatesAutoresizingMaskIntoConstraints = false
-        buttonsStackView.axis = .vertical
-        buttonsStackView.distribution = .fillEqually
-        buttonsStackView.spacing = 10
-        buttonsStackView.addArrangedSubview(actionButtonFirst)
-        buttonsStackView.addArrangedSubview(actionButtonSecond)
-        
+    private func makeConstraints() {
         NSLayoutConstraint.activate([
             buttonsStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             buttonsStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
@@ -55,12 +70,14 @@ class FeedViewController: UIViewController {
         ])
     }
     
-    
+}
+
+// MARK: Actions
+private extension FeedViewController {
     @objc private func showPost() {
         let postViewController = PostViewController()
         postViewController.post = post
         
         navigationController?.pushViewController(postViewController, animated: true)
     }
-
 }
