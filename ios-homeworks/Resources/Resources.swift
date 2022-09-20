@@ -15,12 +15,17 @@ struct Resources {
     }
     
     struct Images {
-        static let cat = UIImage(named: "cat")
+        static let catAvatar = UIImage(named: "CatAvatar")
+        static let logo = UIImage(named: "Logo")
     }
     
     struct Fonts {
         static let title = UIFont.systemFont(ofSize: 18, weight: .bold)
         static let body = UIFont.systemFont(ofSize: 14, weight: .regular)
+    }
+    
+    struct Colors {
+        static let accent = UIColor(named: "AccentColor")
     }
 }
 
