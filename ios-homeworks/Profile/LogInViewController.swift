@@ -87,6 +87,11 @@ class LogInViewController: UIViewController {
     }
     
     
+    override func viewDidDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    
     private func addSubviews() {
         view.addSubview(scrollView)
         
