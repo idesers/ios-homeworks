@@ -20,6 +20,7 @@ class LogInViewController: UIViewController {
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.delaysContentTouches = false
         return scrollView
     }()
     
@@ -71,6 +72,21 @@ class LogInViewController: UIViewController {
     }
     
     
+    override func viewWillAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardDidShow(_:)),
+            name: UIResponder.keyboardDidShowNotification,
+            object: nil)
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardDidHide(_:)),
+            name: UIResponder.keyboardDidHideNotification,
+            object: nil)
+    }
+    
+    
     private func addSubviews() {
         view.addSubview(scrollView)
         
@@ -84,30 +100,28 @@ class LogInViewController: UIViewController {
     
     
     private func makeContraints() {
-        let padding: CGFloat = 16
-        
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         
-            logoImageView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 120),
+            logoImageView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: Constants.logoVerticalPadding),
             logoImageView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-            logoImageView.widthAnchor.constraint(equalToConstant: 100),
+            logoImageView.widthAnchor.constraint(equalToConstant: Constants.logoHeight),
             logoImageView.heightAnchor.constraint(equalTo: logoImageView.widthAnchor),
 
-            textFieldsStackView.topAnchor.constraint(lessThanOrEqualTo: logoImageView.bottomAnchor, constant: 120),
-            textFieldsStackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: padding),
-            textFieldsStackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -padding),
+            textFieldsStackView.topAnchor.constraint(lessThanOrEqualTo: logoImageView.bottomAnchor, constant: Constants.logoVerticalPadding),
+            textFieldsStackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: Constants.padding),
+            textFieldsStackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -Constants.padding),
             textFieldsStackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-            textFieldsStackView.heightAnchor.constraint(equalToConstant: 100),
+            textFieldsStackView.heightAnchor.constraint(equalToConstant: Constants.loginFormHeight),
 
-            loginButton.topAnchor.constraint(equalTo: textFieldsStackView.bottomAnchor, constant: padding),
-            loginButton.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: padding),
-            loginButton.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -padding),
-            loginButton.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -padding),
-            loginButton.heightAnchor.constraint(equalToConstant: 50),
+            loginButton.topAnchor.constraint(equalTo: textFieldsStackView.bottomAnchor, constant: Constants.padding),
+            loginButton.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: Constants.padding),
+            loginButton.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -Constants.padding),
+            loginButton.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -Constants.padding),
+            loginButton.heightAnchor.constraint(equalToConstant: Constants.buttonHeight),
         ])
     }
     
@@ -126,6 +140,7 @@ class LogInViewController: UIViewController {
     private func updateLoginButtonState() {
         loginButton.isEnabled = !login.isEmpty && !password.isEmpty
     }
+    
 }
 
 
@@ -136,8 +151,30 @@ class LogInViewController: UIViewController {
         navigationController?.pushViewController(ProfileViewController(), animated: false)
     }
     
+    
     func forceHideKeyboard() {
         view.endEditing(true)
+    }
+    
+    
+    func keyboardDidHide(_ notification: Notification) {
+        scrollView.setContentOffset(.zero, animated: true)
+    }
+    
+    
+    func keyboardDidShow(_ notification: Notification) {
+        guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+        
+        let keyboardOriginY = keyboardFrame.cgRectValue.origin.y
+        let loginButtonMaxY = scrollView.frame.origin.y + loginButton.frame.origin.y + loginButton.frame.height
+        
+        let yContentOverlap = loginButtonMaxY - keyboardOriginY
+        let yContentOffset = yContentOverlap > -Constants.padding ? yContentOverlap + Constants.padding : 0
+        
+        scrollView.setContentOffset(
+            .init(x: 0, y: yContentOffset),
+            animated: true
+        )
     }
     
 }
@@ -146,4 +183,35 @@ class LogInViewController: UIViewController {
 
 extension LogInViewController: UITextFieldDelegate {
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        forceHideKeyboard()
+        return true
+    }
+    
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        switch textField {
+        case loginTextField:
+            login = textField.text!
+        case passwordTextField:
+            password = textField.text!
+        default:
+            return
+        }
+    }
+    
+}
+
+
+
+private extension LogInViewController {
+    
+    struct Constants {
+        static var padding: CGFloat = 16
+        static var logoVerticalPadding: CGFloat = 120
+        static var logoHeight: CGFloat = 100
+        static var buttonHeight: CGFloat = 50
+        static var loginFormHeight: CGFloat = 100
+    }
+
 }
