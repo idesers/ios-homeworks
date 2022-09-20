@@ -17,7 +17,7 @@ class TabBarController: UITabBarController {
     }
     
     private func configureAppearance() {
-        UITabBar.appearance().tintColor = .label
+        UITabBar.appearance().tintColor = Resources.Colors.accent
         UINavigationBar.appearance().prefersLargeTitles = true
     }
 
