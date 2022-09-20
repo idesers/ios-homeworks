@@ -17,6 +17,7 @@ struct Resources {
     struct Images {
         static let catAvatar = UIImage(named: "CatAvatar")
         static let logo = UIImage(named: "Logo")
+        static let bluePixel = UIImage(named: "BluePixel")
     }
     
     struct Fonts {
