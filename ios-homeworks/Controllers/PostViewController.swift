@@ -32,9 +32,12 @@ class PostViewController: UIViewController {
         navigationItem.largeTitleDisplayMode = .never
     }
     
+}
+
+// MARK: Actions
+private extension PostViewController {
     
     @objc private func barButtonAction() {
         present(InfoViewController(), animated: true)
     }
-    
 }

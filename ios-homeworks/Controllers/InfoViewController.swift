@@ -9,24 +9,31 @@ import UIKit
 
 class InfoViewController: UIViewController {
     
-    private var actionButton =  UIButton(configuration: .tinted())
+    private lazy var actionButton: UIButton = {
+        let actionButton = UIButton(configuration: .tinted())
+        actionButton.translatesAutoresizingMaskIntoConstraints = false
+        actionButton.setTitle("Show Alert", for: .normal)
+        return actionButton
+    }()
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
         
-        configureActionButton()
+        view.backgroundColor = .systemBackground
+        view.addSubview(actionButton)
+        
+        setupTargets()
+        makeConstraints()
     }
     
     
-    private func configureActionButton() {
-        view.addSubview(actionButton)
-        
-        actionButton.setTitle("Show Alert", for: .normal)
+    private func setupTargets() {
         actionButton.addTarget(self, action: #selector(showAlert), for: .touchUpInside)
-        actionButton.translatesAutoresizingMaskIntoConstraints = false
-        
+    }
+    
+    
+    private func makeConstraints() {
         NSLayoutConstraint.activate([
             actionButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 48),
             actionButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -35,6 +42,10 @@ class InfoViewController: UIViewController {
         ])
     }
     
+}
+
+// MARK: Actions
+private extension InfoViewController {
     
     @objc private func showAlert() {
         let alertController = UIAlertController(title: "Alert", message: "'Show Alert' button pressed", preferredStyle: .alert)
