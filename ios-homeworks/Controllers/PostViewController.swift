@@ -15,7 +15,7 @@ class PostViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .systemBackground
-        title = post?.title
+        title = post?.author
         
         configureNavigationBar()
     }

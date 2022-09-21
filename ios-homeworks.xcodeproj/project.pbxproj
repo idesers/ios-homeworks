@@ -24,6 +24,7 @@
 		977B515828B7FBB900D47FF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 977B515728B7FBB900D47FF6 /* Assets.xcassets */; };
 		977B515B28B7FBB900D47FF6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 977B515928B7FBB900D47FF6 /* LaunchScreen.storyboard */; };
 		978FB91D28CFB3FA005CCAD1 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978FB91C28CFB3FA005CCAD1 /* ProfileHeaderView.swift */; };
+		97B58F6128DB7E9C002AFFF9 /* MockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B58F6028DB7E9C002AFFF9 /* MockModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		977B515A28B7FBB900D47FF6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		977B515C28B7FBB900D47FF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		978FB91C28CFB3FA005CCAD1 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		97B58F6028DB7E9C002AFFF9 /* MockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 				977B515728B7FBB900D47FF6 /* Assets.xcassets */,
 				977B515928B7FBB900D47FF6 /* LaunchScreen.storyboard */,
 				9714ADB928BD3DAF00A842C8 /* Resources.swift */,
+				97B58F6028DB7E9C002AFFF9 /* MockModel.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 				9744BE5F28DA506F002D09A4 /* LogInViewController.swift in Sources */,
 				9714ADBA28BD3DAF00A842C8 /* Resources.swift in Sources */,
 				9714ADB428BD3CC700A842C8 /* FeedViewController.swift in Sources */,
+				97B58F6128DB7E9C002AFFF9 /* MockModel.swift in Sources */,
 				977B515128B7FBB900D47FF6 /* SceneDelegate.swift in Sources */,
 				9714ADB828BD3CEC00A842C8 /* InfoViewController.swift in Sources */,
 				9744BE6628DA568A002D09A4 /* UIImage+Ext.swift in Sources */,
