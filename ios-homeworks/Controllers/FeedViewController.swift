@@ -31,7 +31,7 @@ class FeedViewController: UIViewController {
         return buttonsStackView
     }()
     
-    private let post = Post(title: "This is post")
+    private let post = MockModel.posts.first!
     
 
     override func viewDidLoad() {
