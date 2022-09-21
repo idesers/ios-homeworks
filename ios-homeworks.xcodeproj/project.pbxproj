@@ -25,6 +25,7 @@
 		977B515B28B7FBB900D47FF6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 977B515928B7FBB900D47FF6 /* LaunchScreen.storyboard */; };
 		978FB91D28CFB3FA005CCAD1 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 978FB91C28CFB3FA005CCAD1 /* ProfileHeaderView.swift */; };
 		97B58F6128DB7E9C002AFFF9 /* MockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B58F6028DB7E9C002AFFF9 /* MockModel.swift */; };
+		97B58F6328DB8235002AFFF9 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B58F6228DB8235002AFFF9 /* PostTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		977B515C28B7FBB900D47FF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		978FB91C28CFB3FA005CCAD1 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		97B58F6028DB7E9C002AFFF9 /* MockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockModel.swift; sourceTree = "<group>"; };
+		97B58F6228DB8235002AFFF9 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 				9744BE6028DA5313002D09A4 /* CredentialsTextField.swift */,
 				9744BE6228DA5584002D09A4 /* RoundedButton.swift */,
 				9744BE6728DA58A2002D09A4 /* RoundedTextField.swift */,
+				97B58F6228DB8235002AFFF9 /* PostTableViewCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 			files = (
 				977B515328B7FBB900D47FF6 /* TabBarController.swift in Sources */,
 				977B514F28B7FBB900D47FF6 /* AppDelegate.swift in Sources */,
+				97B58F6328DB8235002AFFF9 /* PostTableViewCell.swift in Sources */,
 				9744BE5F28DA506F002D09A4 /* LogInViewController.swift in Sources */,
 				9714ADBA28BD3DAF00A842C8 /* Resources.swift in Sources */,
 				9714ADB428BD3CC700A842C8 /* FeedViewController.swift in Sources */,
