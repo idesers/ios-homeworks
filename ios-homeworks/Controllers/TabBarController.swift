@@ -17,27 +17,27 @@ class TabBarController: UITabBarController {
     }
     
     private func configureAppearance() {
-        UITabBar.appearance().tintColor = .label
+        UITabBar.appearance().tintColor = Resources.Colors.accent
         UINavigationBar.appearance().prefersLargeTitles = true
     }
 
     private func configureControllers() {
-        let feedNavigationController = UINavigationController(rootViewController: FeedViewController())
-        let profileNavigationController = UINavigationController(rootViewController: ProfileViewController())
+        let feedFlow = UINavigationController(rootViewController: FeedViewController())
+        let profileFlow = UINavigationController(rootViewController: LogInViewController())
         
-        feedNavigationController.tabBarItem = UITabBarItem(
+        feedFlow.tabBarItem = UITabBarItem(
             title: "Feed",
             image: Resources.Icons.house,
             tag: 0
         )
         
-        profileNavigationController.tabBarItem = UITabBarItem(
+        profileFlow.tabBarItem = UITabBarItem(
             title: "Profile",
             image: Resources.Icons.person,
             tag: 1
         )
         
-        setViewControllers([feedNavigationController, profileNavigationController], animated: false)
+        setViewControllers([feedFlow, profileFlow], animated: false)
     }
 }
 

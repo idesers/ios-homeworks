@@ -19,7 +19,7 @@ class ProfileHeaderView: UIView {
     private lazy var avatarImageView: UIImageView = {
         let avatarImageView = UIImageView()
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false
-        avatarImageView.image = Resources.Images.cat
+        avatarImageView.image = Resources.Images.catAvatar
         avatarImageView.contentMode = .scaleAspectFill
         avatarImageView.layer.borderColor = UIColor.white.cgColor
         avatarImageView.layer.borderWidth = 3
