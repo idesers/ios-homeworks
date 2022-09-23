@@ -9,56 +9,88 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    private lazy var profileHeaderView: ProfileHeaderView = {
-        let profileHeaderView = ProfileHeaderView()
-        profileHeaderView.translatesAutoresizingMaskIntoConstraints = false
-        return profileHeaderView
+    private var viewModel = MockModel.posts
+    
+    
+    private lazy var postsTableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .grouped)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.identifier)
+        tableView.keyboardDismissMode = .onDrag
+        tableView.dataSource = self
+        tableView.delegate = self
+        return tableView
     }()
     
-    private lazy var actionButton: UIButton = {
-        let actionButton = UIButton(configuration: .filled())
-        actionButton.translatesAutoresizingMaskIntoConstraints = false
-        actionButton.setTitle("Action", for: .normal)
-        return actionButton
-    }()
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "Profile"
         navigationItem.largeTitleDisplayMode = .never
-        view.backgroundColor = .lightGray
+        view.backgroundColor = .systemGroupedBackground
         
         addSubviews()
         makeConstraints()
     }
     
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-    }
-    
-    
     private func addSubviews() {
-        view.addSubview(profileHeaderView)
-        view.addSubview(actionButton)
+        view.addSubview(postsTableView)
     }
     
     
     private func makeConstraints() {
         NSLayoutConstraint.activate([
-            profileHeaderView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            profileHeaderView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            profileHeaderView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            profileHeaderView.heightAnchor.constraint(equalToConstant: 220)
+            postsTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            postsTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            postsTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            postsTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
+    }
+    
+}
+
+
+
+extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        viewModel.count
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifier, for: indexPath) as? PostTableViewCell else {
+            return UITableViewCell()
+        }
         
-        NSLayoutConstraint.activate([
-            actionButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            actionButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            actionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-        ])
+        let post = viewModel[indexPath.row]
+        let postCellViewModel = PostTableViewCell.ViewModel(
+            author: post.author,
+            image: UIImage(named: post.image),
+            description: post.description,
+            likes: post.likes,
+            views: post.views
+        )
+        
+        cell.setup(with: postCellViewModel)
+        
+        return cell
+    }
+    
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return ProfileHeaderView()
+    }
+    
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        250
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
 }
