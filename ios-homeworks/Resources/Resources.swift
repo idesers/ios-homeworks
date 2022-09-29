@@ -12,6 +12,7 @@ struct Resources {
         static let house = UIImage(systemName: "house")!
         static let person = UIImage(systemName: "person")!
         static let infoCircle = UIImage(systemName: "info.circle")
+        static let arrowRight = UIImage(systemName: "arrow.right")
     }
     
     struct Images {
