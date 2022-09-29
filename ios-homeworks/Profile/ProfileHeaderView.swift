@@ -32,6 +32,7 @@ class ProfileHeaderView: UIView {
         labelsStackView.translatesAutoresizingMaskIntoConstraints = false
         labelsStackView.distribution = .equalSpacing
         labelsStackView.axis = .vertical
+        labelsStackView.spacing = padding
         return labelsStackView
     }()
     
@@ -121,29 +122,23 @@ class ProfileHeaderView: UIView {
         NSLayoutConstraint.activate([
             avatarImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: padding),
             avatarImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding),
-            avatarImageView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.3),
-            avatarImageView.heightAnchor.constraint(equalTo: avatarImageView.widthAnchor),
-        ])
-        
-        NSLayoutConstraint.activate([
-            labelsStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 27),
+            avatarImageView.widthAnchor.constraint(equalToConstant: 120),
+            avatarImageView.heightAnchor.constraint(equalToConstant: 120),
+
+            labelsStackView.topAnchor.constraint(equalTo: avatarImageView.topAnchor, constant: padding),
             labelsStackView.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: padding),
             labelsStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
-            labelsStackView.bottomAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: -padding)
-        ])
-        
-        NSLayoutConstraint.activate([
-            statusTextField.topAnchor.constraint(equalTo: labelsStackView.bottomAnchor, constant: padding / 2),
+ 
+            statusTextField.topAnchor.constraint(equalTo: labelsStackView.bottomAnchor, constant: padding),
             statusTextField.leadingAnchor.constraint(equalTo: labelsStackView.leadingAnchor),
             statusTextField.trailingAnchor.constraint(equalTo: labelsStackView.trailingAnchor),
-            statusTextField.heightAnchor.constraint(equalToConstant: 40)
-        ])
-        
-        NSLayoutConstraint.activate([
-            setStatusButton.topAnchor.constraint(equalTo: statusTextField.bottomAnchor, constant: padding / 2),
+            statusTextField.heightAnchor.constraint(equalToConstant: 40),
+
+            setStatusButton.topAnchor.constraint(equalTo: statusTextField.bottomAnchor, constant: padding),
             setStatusButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding),
             setStatusButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
-            setStatusButton.heightAnchor.constraint(equalToConstant: 50)
+            setStatusButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -padding),
+            setStatusButton.heightAnchor.constraint(equalToConstant: 50),
         ])
     }
     
