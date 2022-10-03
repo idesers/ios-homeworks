@@ -9,7 +9,7 @@ import UIKit
 
 class PostTableViewCell: UITableViewCell {
     
-    static let identifier = String(describing: self)
+    static let identifier = "PostTableViewCell"
 
     struct ViewModel {
         let author: String
@@ -113,17 +113,17 @@ class PostTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             authorLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: padding),
             authorLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
-            authorLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: padding),
-            
+            authorLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
+
             photoImageView.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: padding),
             photoImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             photoImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             photoImageView.heightAnchor.constraint(equalTo: photoImageView.widthAnchor),
-            
+
             descriptionLabel.topAnchor.constraint(equalTo: photoImageView.bottomAnchor, constant: padding),
             descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
             descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
-            
+
             stackView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: padding),
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),

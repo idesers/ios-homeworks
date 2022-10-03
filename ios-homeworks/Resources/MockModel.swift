@@ -36,4 +36,11 @@ struct MockModel {
              views: 15000),
     ]
     
+    static let photos: [Photo] = [
+        Photo(image: "Photo"), Photo(image: "Photo-1"), Photo(image: "Photo-2"), Photo(image: "Photo-3"), Photo(image: "Photo-4"),
+        Photo(image: "Photo-5"), Photo(image: "Photo-6"), Photo(image: "Photo-7"), Photo(image: "Photo-8"), Photo(image: "Photo-9"),
+        Photo(image: "Photo-10"), Photo(image: "Photo-11"), Photo(image: "Photo-12"), Photo(image: "Photo-13"), Photo(image: "Photo-14"),
+        Photo(image: "Photo-15"),
+    ]
+    
 }
