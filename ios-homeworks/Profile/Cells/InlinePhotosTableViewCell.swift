@@ -18,6 +18,20 @@ class InlinePhotosTableViewCell: UITableViewCell {
         static let itemSpacing: CGFloat = 8
         static let numberOfItemsPerScreenWidth: Int = 4
         static let itemHeightToWidth: CGFloat = 0.7
+        
+        static var itemSize: CGSize {
+            let spacing = Constants.itemSpacing * CGFloat(Constants.numberOfItemsPerScreenWidth - 1)
+            let insets = Constants.padding * 2
+            let avaliableWidth = UIScreen.main.bounds.width - insets - spacing
+            let itemWidth = avaliableWidth / CGFloat(Constants.numberOfItemsPerScreenWidth)
+            let itemHeight = itemWidth * Constants.itemHeightToWidth
+            return CGSize(width: itemWidth, height: itemHeight)
+        }
+        
+        static var collectionViewHeight: CGFloat {
+            let offset: CGFloat = 2
+            return Constants.itemSize.height + Constants.padding * 2 + offset
+        }
     }
     
     private lazy var photosLabel: UILabel = {
@@ -43,6 +57,7 @@ class InlinePhotosTableViewCell: UITableViewCell {
         collectionLayout.minimumLineSpacing = Constants.itemSpacing
         collectionLayout.minimumInteritemSpacing = CGFloat.greatestFiniteMagnitude
         collectionLayout.sectionInset = UIEdgeInsets(top: Constants.padding, left: Constants.padding, bottom: Constants.padding, right: Constants.padding)
+        collectionLayout.itemSize = Constants.itemSize
         return collectionLayout
     }()
     
@@ -50,7 +65,6 @@ class InlinePhotosTableViewCell: UITableViewCell {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionLayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: PhotoCollectionViewCell.identifier)
-        collectionView.delegate = self
         collectionView.allowsSelection = false
         return collectionView
     }()
@@ -92,30 +106,9 @@ class InlinePhotosTableViewCell: UITableViewCell {
             photosCollectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             photosCollectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             photosCollectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            photosCollectionView.heightAnchor.constraint(equalToConstant: 90),
+            photosCollectionView.heightAnchor.constraint(equalToConstant: Constants.collectionViewHeight),
         ])
     }
     
 }
-
-
-extension InlinePhotosTableViewCell: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        guard let collectionViewLayout = collectionViewLayout as? UICollectionViewFlowLayout else {
-            return .zero
-        }
-        
-        let spacing = collectionViewLayout.minimumLineSpacing * CGFloat(Constants.numberOfItemsPerScreenWidth - 1)
-        let insets = collectionViewLayout.sectionInset.left + collectionViewLayout.sectionInset.right
-        let avaliableWidth = collectionView.frame.width - insets - spacing
-
-        let itemWidth = avaliableWidth / CGFloat(Constants.numberOfItemsPerScreenWidth)
-        let itemHeight = itemWidth * Constants.itemHeightToWidth
-
-        return CGSize(width: itemWidth, height: itemHeight)
-    }
-}
-
-
-
 
